@@ -1,0 +1,355 @@
+/**
+ * assets/tdpro.css
+ * Global layout, typography, navigation, product cards, cart, and widget styling for the PDGA TD Pro Shop.
+ */
+
+
+:root{
+  --line:#e6e8ee; --ink:#0e172a; --ink-2:#475569; --panel:#f7f9fc;
+  --pdga-blue:#2e4a7f; --btn:#355d92; --teal:#0e9488;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/*header */
+.pdga-head{position:sticky;top:0;background:#fff;z-index:1000;border-bottom:1px solid var(--line)}
+.pdga-head .row-top{height:76px;display:flex;align-items:center;gap:16px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:14px}
+.pdga-logo{width:110px;height:40px;border-radius:6px;}
+.pdga-head .title{font-weight:700;color:var(--ink);text-decoration:none;line-height:1.05}
+.searchbar{flex:1;display:flex;gap:10px;max-width:760px}
+.search-input{flex:1;height:40px;border:1px solid var(--line);border-radius:10px;padding:0 12px;background:#fff}
+.right-controls{display:flex;align-items:center;gap:10px}
+.country{height:36px;border:1px solid var(--line);border-radius:8px;padding:4px 8px;background:#fff}
+.curr{font-weight:700;min-width:52px;display:inline-block;text-align:center}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-size:14px;cursor:pointer;transition:transform .08s ease, box-shadow .08s ease, background-color .08s ease}.btn.btn-pressed{transform:translateY(1px);box-shadow:none;opacity:.9}
+.btn.primary{background:var(--btn);color:#fff;border-color:var(--btn)}
+.badge{display:inline-block;min-width:22px;text-align:center;padding:2px 6px;border-radius:999px;background:var(--panel);color:var(--ink-2);font-size:12px}
+.pdga-head .row-nav{height:44px;display:flex;align-items:center}
+.nav{display:flex;gap:22px}
+.nav a{color:var(--ink);text-decoration:none;font-size:15px;padding:10px 0;border-radius:8px}
+.nav a:hover{color:var(--btn)}
+.teal-underline{height:4px;background:linear-gradient(90deg,var(--teal),#1f6f8b)}
+.pdga-logo img{max-width: 100%;height: auto;display: block;}
+
+/* Page spacing */
+main.wrap{padding:28px 16px}
+h1{font-size:32px;margin:0 0 16px}
+.section{margin:18px 0 8px}
+
+/* Cards + hover zoom */
+.grid-4{display:grid;gap:24px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(16,24,40,.04);transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease}
+.card .img{height:210px;overflow:hidden;background:#f6f7fb}
+.card .img img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .25s ease}
+.card:hover{box-shadow:0 10px 24px rgba(16,24,40,.10);border-color:#d9dce4;transform:translateY(-2px)}
+.card:hover .img img{transform:scale(1.06)}
+.card .body{padding:12px 14px}
+.title{font-weight:600;margin-bottom:6px}
+.price{font-weight:700;margin-left:auto}
+.cta-row{display:flex;align-items:center;gap:10px;margin:8px 0 10px}
+.qty-inline{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.qty-inline button{width:36px;height:36px;border:0;background:#fff;cursor:pointer;font-size:18px}
+.qty-inline input{height:36px;width:56px;border:0;text-align:center}
+.small{font-size:13px}
+.muted{color:var(--ink-2)}
+footer{border-top:1px solid var(--line);margin-top:24px}
+footer .wrap{padding:16px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
+/* Dropdown base */
+.nav-item.dropdown{ position:relative }
+.nav-item.dropdown > .nav-link{ display:inline-block; padding:8px 12px }
+
+/* Menu panel */
+.dropdown-menu{
+  position:absolute;
+  top:100%;
+  left:0;
+  min-width: 240px;
+  margin:0;
+  padding:8px 0;
+  list-style:none;
+  display:none;
+  z-index:1000;
+
+  background: var(--panel, #3a4248);
+  color: var(--text, #e8ecef);
+  border: 2px solid var(--accent, #8b1111);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+/* Show on hover and keyboard focus */
+.nav-item.dropdown:hover > .dropdown-menu,
+.nav-item.dropdown:focus-within > .dropdown-menu,
+.nav-item.dropdown.open > .dropdown-menu{ display:block }
+
+/* Links */
+.dropdown-menu a{
+  display:block;
+  padding:8px 12px;
+  color: inherit;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.dropdown-menu a:hover,
+.dropdown-menu a:focus{
+  background: rgba(139,17,17,.12);
+  outline: none;
+  text-decoration:none;
+}
+
+nav ul{list-style:none;margin:0;padding:0}
+.nav-item.dropdown{list-style:none}
+.dropdown-menu a{color:var(--text,#2e4a7f)}
+.dropdown-menu a:hover{background:rgba(139,17,17,0.25);color:#fff}
+
+/* Frequently bought label */
+.badge-frequent {
+  display: inline-block;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  margin-left: 6px;
+  background: #007a3d;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* images with items in cart fix*/
+.cart-thumb{ width:56px; height:56px; object-fit:cover; border-radius:8px; background:#f2f2f2 }
+
+
+/* Cart row layout with image column and customization block */
+.cart-row{
+  display:grid;
+  grid-template-columns: 72px 1fr auto auto auto;
+  gap:12px;
+  align-items:center;
+}
+.cart-row .c-img{grid-column:1}
+.cart-row .c-info{grid-column:2}
+.cart-row .c-price{grid-column:3;justify-self:end;font-weight:700}
+.cart-row .c-qty{grid-column:4;justify-self:end}
+.cart-row .c-line{grid-column:5;justify-self:end;font-weight:700}
+.cart-row .c-custom{grid-column:1 / -1; margin-top:8px}
+
+/* cart thumbnail */
+.cart-thumb{ width:56px; height:56px; object-fit:cover; border-radius:8px; background:#f2f2f2 }
+
+
+/* Disc sub-tabs inside Discs accordion */
+.disc-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+.disc-tab-btn{
+  flex:1;
+  border:none;
+  border-radius:8px;
+  padding:8px 12px;
+  font-weight:600;
+  cursor:pointer;
+  background:#e5edf8;
+  color:var(--ink);
+}
+
+.disc-tab-btn.active{
+  background:var(--pdga-blue);
+  color:#fff;
+}
+
+/* Only show the active disc grid panel */
+.disc-tab-panel{
+  display:none;
+}
+
+.disc-tab-panel.active{
+  display:block;
+}
+
+/* Make cart recommendations span full width under each cart row */
+.cart-row .cart-rec-hook{
+  grid-column:1 / -1;
+  margin-top:8px;
+}
+/* customization details */
+.custom-controls{ padding:8px; border:1px dashed var(--line); border-radius:10px; background: var(--panel); }
+.custom-controls .custom-label{ display:block; font-size:13px; color: var(--ink-2); margin-bottom:4px}
+.custom-controls .custom-note-row{ display:flex; gap:8px; align-items:flex-start; margin-top:4px }
+.custom-controls textarea{ flex:1; min-width:220px; border:1px solid var(--line); border-radius:10px; padding:8px; font: inherit; background:#fff; color: var(--ink) }
+.custom-controls .thumbs{ display:flex; gap:8px; margin-top:6px }
+.custom-controls .thumbs .thumb{ width:48px; height:48px; object-fit:cover; border-radius:6px; border:1px solid var(--line) }
+
+.pay-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:64px; height:24px; border-radius:4px;
+}
+.pay-logo{ height:24px; width:auto; display:block }
+/* --- Guided progress bar (linked + labeled) --- */
+.progress-wrap{width:100%;background:var(--panel);padding:8px 12px;border-bottom:2px solid var(--accent);box-sizing:border-box;position:sticky;top:64px;z-index:30}
+.progress-track{display:flex;align-items:center;gap:8px;max-width:1200px;margin:0 auto}
+.prg-node{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:56px}
+.prg-link{display:flex;flex-direction:column;align-items:center;text-decoration:none}
+.prg-label{font-size:.75rem;color:var(--muted);text-align:center}
+.prg-ico{width:22px;height:22px;color:#7c8790;opacity:.6}
+.prg-ico.active{color:#2b6cb0;opacity:1}
+.prg-link:focus .prg-ico,.prg-link:hover .prg-ico{opacity:1}
+.prg-link:focus .prg-label,.prg-link:hover .prg-label{color:var(--text)}
+.prg-line{flex:1;height:4px;background:#444;border-radius:2px}
+@media (max-width:720px){.prg-label{display:none}.progress-wrap{top:56px}}
+
+.td-mini-widget{
+  position: fixed;
+  left: 16px;
+  top: 140px;
+  width: 260px;
+  max-height: 420px;
+  z-index: 10;
+  background: var(--panel);
+  border: 1px solid var(--card);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.td-mini-widget .mini-title{
+  position: sticky; top: 0;
+  margin: 0; padding: 10px 12px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--card);
+  font-size: 15px; font-weight: 600;
+  z-index: 1;
+}
+
+.td-mini-widget .mini-body{
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 8px 12px;
+}
+
+.td-mini-widget .mini-total{
+  position: sticky; bottom: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border-top: 1px solid var(--card);
+  font-weight: 600;
+}
+
+.td-mini-widget .mini-list{ list-style:none; margin:0; padding:0; }
+.td-mini-widget .mini-item{ display:flex; justify-content:space-between; gap:12px; padding:4px 0; }
+
+@media (max-width: 980px){ .td-mini-widget{ display:none; } }
+
+[id^="catalog"] { scroll-margin-top: var(--header-offset, 110px); }
+
+
+
+.recommend-tile{
+  margin-top:8px;
+  padding:8px 10px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:8px;
+  font-size:0.85rem;
+}
+.recommend-tile .rec-main{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:6px;
+}
+.recommend-tile .rec-label{
+  flex:1;
+}
+.recommend-tile .rec-qty{
+  display:flex;
+  align-items:center;
+}
+.recommend-tile .rec-custom-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.recommend-tile .rec-add-btn{
+  white-space:nowrap;
+}
+
+
+
+.layout-main{
+  padding-bottom:48px;
+}
+
+
+.layout-shell{display:grid;grid-template-columns:1fr 340px;gap:24px;max-width:1540px;margin:0 auto;padding:16px 24px 32px;}
+
+
+.layout-cart{
+  align-self:flex-start;
+  position:sticky;
+  top:88px;
+}
+
+
+.start-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+
+
+.accord{
+  border-radius:12px;
+  margin-top:16px;
+  background:var(--panel);
+  box-shadow:0 6px 18px rgba(15,23,42,.16);
+}
+
+
+.accord-toggle{
+  width:100%;
+  text-align:left;
+  padding:10px 14px;
+  border:none;
+  border-radius:12px 12px 0 0;
+  background:var(--pdga-blue);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+
+
+.accord-body{
+  padding:12px 14px 18px 14px;
+  background:#fff;
+  border-radius:0 0 12px 12px;
+  display:none;
+}
+
+
+/* Home layout: use grid with right column mini-cart & recommendations */
+.layout-shell .td-mini-widget{
+  position: static;
+  left: auto;
+  top: auto;
+  width: 100%;
+  max-height: 420px;
+}
+
+
+/* Accordion open state */
+.accord.open .accord-body{
+  display:block;
+}
