@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+        @file index.html
+        @description Homepage entry for the PDGA TD Pro Shop. Provides field-length setup, quick links into guided flows, and the mini cart summary widget.
+    -->
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        Start
+    </title>
+    <!-- External stylesheet -->
+    <link href="assets/tdpro.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Header and site branding -->
+    <header class="pdga-head">
+        <div class="wrap row-top">
+            <div class="brand">
+                <div aria-label="PDGA" class="pdga-logo">
+                    <a href="https://www.pdga.com">
+                        <img src="https://www.pdga.com/sites/all/themes/pdga/logo.png" />
+                    </a>
+                </div>
+                <a class="title" href="index.html">
+                    PDGA TD Pro
+                    <br />
+                    Shop
+                </a>
+            </div>
+            <div class="searchbar">
+                <input aria-label="Search" class="search-input"
+                    placeholder="Search discs, apparel, TD kits, Custom Items" />
+                <button class="btn primary">
+                    Search
+                </button>
+            </div>
+            <div class="right-controls">
+                <select aria-label="Country" class="country" id="countrySelect">
+                    <option value="US">
+                        United States
+                    </option>
+                    <option value="CA">
+                        Canada
+                    </option>
+                    <option value="GB">
+                        United Kingdom
+                    </option>
+                    <option value="EU">
+                        Eurozone
+                    </option>
+                    <option value="AU">
+                        Australia
+                    </option>
+                    <option value="JP">
+                        Japan
+                    </option>
+                    <option value="SE">
+                        Sweden
+                    </option>
+                    <option value="NO">
+                        Norway
+                    </option>
+                    <option value="CH">
+                        Switzerland
+                    </option>
+                    <option value="MX">
+                        Mexico
+                    </option>
+                </select>
+                <span class="curr" id="currencyBadge">
+                    USD $
+                </span>
+                <a class="btn ghost" href="https://www.pdga.com/user/login?destination=homepage">
+                    Log in
+                </a>
+                <a class="btn ghost" href="TD_Cart.html">
+                    Cart
+                    <span class="badge" id="cartCount">
+                        0
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Primary navigation -->
+        <div class="wrap row-nav">
+            <nav class="nav">
+                <a href="index.html">
+                    Home
+                </a>
+                <a href="TD_Guided_Discs.html">
+                    Discs
+                </a>
+                <a href="TD_Guided_Supplies.html">
+                    Field Supplies
+                </a>
+                <a href="TD_Guided_Extras.html">
+                    Extras
+                </a>
+                <li class="nav-item dropdown" id="nav-about">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="#">
+                        About ▾
+                    </a>
+                    <ul aria-label="About submenu" class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="https://www.pdga.com/introduction" rel="noopener" target="_blank">
+                                What is Disc Golf?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/history" rel="noopener" target="_blank">
+                                History
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/board-directors" rel="noopener" target="_blank">
+                                Board of Directors
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/leadership" rel="noopener" target="_blank">
+                                Leadership
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/volunteers" rel="noopener" target="_blank">
+                                Volunteers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/news" rel="noopener" target="_blank">
+                                News
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/announcements" rel="noopener" target="_blank">
+                                Announcements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/faq-page" rel="noopener" target="_blank">
+                                FAQs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/careers" rel="noopener" target="_blank">
+                                Careers @ the PDGA
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <a href="https://www.pdga.com/contact">
+                    Contact
+                </a>
+            </nav>
+        </div>
+        <div class="teal-underline">
+        </div>
+    </header>
+
+
+    <!-- Layout shell: progress | main | mini-cart -->
+    <div class="layout-shell">
+
+
+        <main class="layout-main">
+            <h1>
+                Start Your Tournament
+            </h1>
+
+            <!-- Start section with tournaments + personal info -->
+            <section class="section">
+                <div class="start-grid">
+                    <!-- Your Tournaments -->
+                    <article class="card">
+                        <div class="body">
+                            <div class="title">Your Tournaments</div>
+                            <p class="small muted">
+                                Log in to load a previous tournament's cart.
+                            </p>
+                            <label for="loginEmail" class="small">Email</label><br />
+                            <input class="input" id="loginEmail" type="email" placeholder="you@example.com" />
+                            <div style="margin-top:8px">
+                                <label for="loginPass" class="small">Password</label><br />
+                                <input class="input" id="loginPass" type="password"
+                                    placeholder="Letters, numbers, ! @ # $ % ^ &amp; *" />
+                            </div>
+                            <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+                                <button class="btn primary" id="loginBtn" type="button">Login</button>
+                                <span class="small muted" id="loginStatus" style="display:none"></span>
+                            </div>
+                            <div style="margin-top:12px">
+                                <div class="small muted" style="margin-bottom:4px">Your saved tournaments</div>
+                                <ul id="savedTournaments" class="small"
+                                    style="list-style:none;padding:0;margin:0;max-height:140px;overflow:auto"></ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Your Info -->
+                    <article class="card">
+                        <div class="body">
+                            <div class="title">Your Info</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                                <div>
+                                    <label for="userName" class="small">Your name</label><br />
+                                    <input class="input" id="userName" type="text"
+                                        placeholder="Tournament director name" />
+                                </div>
+                                <div>
+                                    <label for="tournamentName" class="small">Tournament name</label><br />
+                                    <input class="input" id="tournamentName" type="text"
+                                        placeholder="Tournament name" />
+                                </div>
+                                <div>
+                                    <label for="userEmail" class="small">Contact email</label><br />
+                                    <input class="input" id="userEmail" type="email" placeholder="Email for receipt" />
+                                </div>
+                            </div>
+
+                            <!-- Date + distance inputs kept from original layout -->
+                            <div style="margin-top:16px">
+                                <label for="tourDate" class="small">
+                                    <strong>Possible date for your Tournament</strong>
+                                </label>
+                                <br />
+                                <input class="input" id="tourDate"
+                                    style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px"
+                                    type="date" />
+                                <div style="margin-top:8px">
+                                    <button class="btn" id="saveDateBtn" type="button">Save date</button>
+                                    <span class="small muted" id="dateSavedMsg"
+                                        style="margin-left:8px;display:none">Date saved</span>
+                                </div>
+                            </div>
+
+                            <div style="margin-top:16px">
+                                <label for="fieldLengthFeet" class="small">
+                                    <strong>Field length in feet (optional)</strong>
+                                </label>
+                                <br />
+                                <input class="input" id="fieldLengthFeet" inputmode="numeric" min="0"
+                                    placeholder="Enter distance in feet (optional)"
+                                    style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px"
+                                    type="number" />
+                                <div style="margin-top:8px">
+                                    <button class="btn" id="saveDistanceBtn" type="button">Save distance</button>
+                                    <span class="small muted" id="distanceSavedMsg"
+                                        style="margin-left:8px;display:none">
+                                        Distance saved
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="small muted" style="margin-top:10px">
+                                Saved info will be used on your receipt and to recommend flags and paint.
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Accordion: Quick Packs -->
+            <section class="section accord" id="section-quickpacks">
+                <button class="accord-toggle" type="button">Make your quick player's pack here</button>
+                <div class="accord-body">
+                    <!-- Quick players pack presets -->
+                    <section class="section" style="margin-top:24px">
+                        <h2>
+                            Build the player pack you want right here!
+                        </h2>
+                        <p class="small muted">
+                            Choose a tournament size, pick plain, custom, or N/A for each item type, enter how many
+                            players you want
+                            to equip, then add everything to your cart in one click.
+                        </p>
+                        <div class="grid-4" id="packGrid" style="margin-top:12px">
+                            <!-- Small tournament pack -->
+                            <article class="card" id="packSmall">
+                                <div class="body">
+                                    <div class="title">
+                                        Small tournament
+                                    </div>
+                                    <div class="small muted">
+                                        Recommended 0 &ndash; 30 players
+                                    </div>
+                                    <div style="margin-top:8px">
+                                        <label for="packSmallPlayers">
+                                            Players to equip
+                                        </label>
+                                        <br />
+                                        <input class="input pack-players" id="packSmallPlayers" type="number" min="1"
+                                            placeholder="Number of players" />
+                                    </div>
+                                    <div class="small muted" style="margin-top:8px">
+                                        For each item type, choose plain, custom, or N/A.
+                                    </div>
+                                    <div class="pack-items" style="margin-top:8px">
+                                        <div class="pack-row" data-pack-item="driver"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Driver discs</span>
+                                            <select class="input" aria-label="Driver discs for small pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="mid"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Midrange discs</span>
+                                            <select class="input" aria-label="Midrange discs for small pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="putter"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Putter discs</span>
+                                            <select class="input" aria-label="Putter discs for small pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="marker"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Markers</span>
+                                            <select class="input" aria-label="Markers for small pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="hoodie"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Hoodies</span>
+                                            <select class="input" aria-label="Hoodies for small pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="steel"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Steel bottles</span>
+                                            <select class="input" aria-label="Steel bottles for small pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="plastic"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Plastic bottles</span>
+                                            <select class="input" aria-label="Plastic bottles for small pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top:12px">
+                                        <button type="button" class="btn primary" data-pack-add="1">
+                                            Add small pack to cart
+                                        </button>
+                                        <div class="small muted pack-msg" style="display:none;margin-top:6px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Medium tournament pack -->
+                            <article class="card" id="packMedium">
+                                <div class="body">
+                                    <div class="title">
+                                        Medium tournament
+                                    </div>
+                                    <div class="small muted">
+                                        Recommended 30 &ndash; 75 players
+                                    </div>
+                                    <div style="margin-top:8px">
+                                        <label for="packMediumPlayers">
+                                            Players to equip
+                                        </label>
+                                        <br />
+                                        <input class="input pack-players" id="packMediumPlayers" type="number" min="1"
+                                            placeholder="Number of players" />
+                                    </div>
+                                    <div class="small muted" style="margin-top:8px">
+                                        For each item type, choose plain, custom, or N/A.
+                                    </div>
+                                    <div class="pack-items" style="margin-top:8px">
+                                        <div class="pack-row" data-pack-item="driver"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Driver discs</span>
+                                            <select class="input" aria-label="Driver discs for medium pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="mid"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Midrange discs</span>
+                                            <select class="input" aria-label="Midrange discs for medium pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="putter"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Putter discs</span>
+                                            <select class="input" aria-label="Putter discs for medium pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="marker"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Markers</span>
+                                            <select class="input" aria-label="Markers for medium pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="hoodie"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Hoodies</span>
+                                            <select class="input" aria-label="Hoodies for medium pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="steel"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Steel bottles</span>
+                                            <select class="input" aria-label="Steel bottles for medium pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="plastic"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Plastic bottles</span>
+                                            <select class="input" aria-label="Plastic bottles for medium pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top:12px">
+                                        <button type="button" class="btn primary" data-pack-add="1">
+                                            Add medium pack to cart
+                                        </button>
+                                        <div class="small muted pack-msg" style="display:none;margin-top:6px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Large tournament pack -->
+                            <article class="card" id="packLarge">
+                                <div class="body">
+                                    <div class="title">
+                                        Large tournament
+                                    </div>
+                                    <div class="small muted">
+                                        Recommended 75+ players
+                                    </div>
+                                    <div style="margin-top:8px">
+                                        <label for="packLargePlayers">
+                                            Players to equip
+                                        </label>
+                                        <br />
+                                        <input class="input pack-players" id="packLargePlayers" type="number" min="1"
+                                            placeholder="Number of players" />
+                                    </div>
+                                    <div class="small muted" style="margin-top:8px">
+                                        For each item type, choose plain, custom, or N/A.
+                                    </div>
+                                    <div class="pack-items" style="margin-top:8px">
+                                        <div class="pack-row" data-pack-item="driver"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Driver discs</span>
+                                            <select class="input" aria-label="Driver discs for large pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="mid"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Midrange discs</span>
+                                            <select class="input" aria-label="Midrange discs for large pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="putter"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Putter discs</span>
+                                            <select class="input" aria-label="Putter discs for large pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="marker"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Markers</span>
+                                            <select class="input" aria-label="Markers for large pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="hoodie"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Hoodies</span>
+                                            <select class="input" aria-label="Hoodies for large pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="steel"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Steel bottles</span>
+                                            <select class="input" aria-label="Steel bottles for large pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="pack-row" data-pack-item="plastic"
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+                                            <span class="small">Plastic bottles</span>
+                                            <select class="input" aria-label="Plastic bottles for large pack">
+                                                <option value="none" selected>N/A</option>
+                                                <option value="plain">Plain</option>
+                                                <option value="custom">Custom</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top:12px">
+                                        <button type="button" class="btn primary" data-pack-add="1">
+                                            Add large pack to cart
+                                        </button>
+                                        <div class="small muted pack-msg" style="display:none;margin-top:6px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Accordion: Discs -->
+            <section class="section accord" id="section-discs">
+                <button class="accord-toggle" type="button">Disc choices are here</button>
+                <div class="accord-body">
+                    <div class="disc-tabs">
+                        <button class="disc-tab-btn active" type="button" data-target="discCustomGrid">Custom
+                            discs</button>
+                        <button class="disc-tab-btn" type="button" data-target="discPlainGrid">Plain discs</button>
+                    </div>
+                    <div id="discCustomGrid" class="disc-tab-panel active"></div>
+                    <div id="discPlainGrid" class="disc-tab-panel"></div>
+                </div>
+            </section>
+
+            <!-- Accordion: Field Supplies -->
+            <section class="section accord" id="section-supplies">
+                <button class="accord-toggle" type="button">Field Supplies here</button>
+                <div class="accord-body">
+                    <article class="card">
+                        <div class="body">
+                            <div class="title">Field supplies</div>
+                            <p class="small muted">
+                                Uses your saved field length to recommend flags and paint just like before.
+                            </p>
+                            <div id="catalogSupplies"></div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Accordion: Extras -->
+            <section class="section accord" id="section-extras">
+                <button class="accord-toggle" type="button">Extras items can be found here</button>
+                <div class="accord-body">
+                    <article class="card">
+                        <div class="body">
+                            <div class="title">Extras</div>
+                            <div id="catalogExtras"></div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right column mini-cart -->
+        <aside class="layout-cart">
+            <div class="td-mini-widget" id="mini-cart"></div>
+
+            <article class="card rec-sidebar">
+                <div class="body">
+                    <div class="title small">Based on the items you have selected we recommend also:</div>
+                    <div id="recommendSidebar" class="small"></div>
+                </div>
+            </article>
+        </aside>
+    </div>
+
+
+
+    <!--  Footer with payment icons and links  -->
+    <footer>
+        <div class="wrap" style="display:flex;align-items:center;gap:12px;padding:16px 0;flex-wrap:wrap">
+        </div>
+    </footer>
+
+    <!-- Application scripts -->
+    <!-- Script: assets/tdpro-cart-core.js -->
+    <script defer="" src="assets/tdpro-cart-core.js">
+    </script>
+
+    <!-- Script: assets/tdpro.js -->
+    <script defer="" src="assets/tdpro.js">
+    </script>
+
+    <!-- Script: assets/tdpro-cartcount.js -->
+    <script defer="" src="assets/tdpro-cartcount.js">
+    </script>
+
+    <!-- Script: assets/tdpro-guided.js -->
+    <script defer="" src="assets/tdpro-guided.js">
+    </script>
+
+    <!-- Script: assets/tdpro-widget.js -->
+    <script defer src="assets/tdpro-widget.js"></script>
+
+    <!-- Inline script: tournament pack builder -->
+    <script>
+        (function () {
+            function bindPackCard(cardId) {
+                var card = document.getElementById(cardId);
+                if (!card || !window.__td) {
+                    return;
+                }
+
+                var addBtn = card.querySelector('[data-pack-add="1"]');
+                if (!addBtn) {
+                    return;
+                }
+
+                var ITEM_MAP = {
+                    driver: { plain: "disc-driver-plain", custom: "disc-driver-custom" },
+                    mid: { plain: "disc-midrange-plain", custom: "disc-midrange-custom" },
+                    putter: { plain: "disc-putter-plain", custom: "disc-putter-custom" },
+                    marker: { plain: "disc-marker-plain", custom: "disc-marker-custom" },
+                    hoodie: { plain: "hoodie-podium", custom: "hoodie-podium" },
+                    steel: { plain: "bottle-steel-34-plain", custom: "bottle-steel-34-custom" },
+                    plastic: { plain: "bottle-squeeze-26-plain", custom: "bottle-squeeze-26-custom" }
+                };
+
+                function findProduct(id) {
+                    var list = window.TD_PRODUCTS || [];
+                    for (var i = 0; i < list.length; i++) {
+                        if (list[i] && list[i].id === id) {
+                            return list[i];
+                        }
+                    }
+                    return null;
+                }
+
+                addBtn.addEventListener("click", function () {
+                    var playersInput = card.querySelector(".pack-players");
+                    var msg = card.querySelector(".pack-msg");
+                    var players = parseInt(playersInput && playersInput.value, 10) || 0;
+                    if (!players || players < 1) {
+                        if (msg) {
+                            msg.textContent = "Enter how many players you want to equip first.";
+                            msg.style.display = "block";
+                            setTimeout(function () { msg.style.display = "none"; }, 2500);
+                        } else {
+                            alert("Enter how many players you want to equip first.");
+                        }
+                        if (playersInput) {
+                            playersInput.focus();
+                        }
+                        return;
+                    }
+
+                    var rows = card.querySelectorAll("[data-pack-item]");
+                    var selections = [];
+                    rows.forEach = rows.forEach || function (fn) {
+                        for (var i = 0; i < rows.length; i++) { fn(rows[i], i); }
+                    };
+                    rows.forEach(function (row) {
+                        var key = row.getAttribute("data-pack-item");
+                        var select = row.querySelector("select");
+                        if (!key || !select) {
+                            return;
+                        }
+                        var choice = select.value;
+                        if (choice === "none") {
+                            return;
+                        }
+                        var map = ITEM_MAP[key];
+                        if (!map) {
+                            return;
+                        }
+                        var productId = choice === "plain" ? map.plain : map.custom;
+                        selections.push({ key: key, variant: choice, productId: productId });
+                    });
+
+                    if (!selections.length) {
+                        if (msg) {
+                            msg.textContent = "Choose at least one item type for this pack.";
+                            msg.style.display = "block";
+                            setTimeout(function () { msg.style.display = "none"; }, 2500);
+                        } else {
+                            alert("Choose at least one item type for this pack.");
+                        }
+                        return;
+                    }
+
+                    var api = window.__td;
+                    var cart = api.loadCart ? (api.loadCart() || []) : [];
+                    selections.forEach(function (sel) {
+                        var prod = findProduct(sel.productId) || {};
+                        var pid = sel.productId;
+                        var existing = cart.find ? cart.find(function (it) { return it.id === pid; }) : null;
+                        var imageUrl = "assets/images/" + pid + ".png";
+                        var customizable = !!prod.customizable;
+                        if (sel.key === "hoodie" && sel.variant === "plain") {
+                            customizable = false;
+                        }
+
+                        if (existing) {
+                            existing.qty = (existing.qty || 0) + players;
+                            if (!existing.imageUrl) {
+                                existing.imageUrl = imageUrl;
+                            }
+                            if (typeof existing.customizable === "undefined") {
+                                existing.customizable = customizable;
+                            }
+                            if (typeof existing.customNotes === "undefined") {
+                                existing.customNotes = "";
+                            }
+                            if (!Array.isArray(existing.customImages)) {
+                                existing.customImages = [];
+                            }
+                        } else {
+                            cart.push({
+                                id: pid,
+                                name: prod.name || pid,
+                                price: prod.price || 0,
+                                qty: players,
+                                imageUrl: imageUrl,
+                                customizable: customizable,
+                                customNotes: "",
+                                customImages: []
+                            });
+                        }
+                    });
+
+                    if (api.saveCart) {
+                        api.saveCart(cart);
+                    }
+                    try {
+                        window.dispatchEvent(new CustomEvent("cartchange", { detail: { cart: cart } }));
+                    } catch (e) { }
+
+                    if (msg) {
+                        msg.textContent = "Added pack for " + players + " player" + (players === 1 ? "" : "s") + " to cart.";
+                        msg.style.display = "block";
+                        setTimeout(function () { msg.style.display = "none"; }, 2500);
+                    }
+
+                    // Visual click feedback for pack buttons
+                    addBtn.classList.add("btn-pressed");
+                    setTimeout(function () {
+                        addBtn.classList.remove("btn-pressed");
+                    }, 150);
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                bindPackCard("packSmall");
+                bindPackCard("packMedium");
+                bindPackCard("packLarge");
+            });
+        })();
+    </script>
+
+
+    <!-- Script: assets/tdpro-progress.js -->
+    <script src="assets/tdpro-progress.js">
+    </script>
+
+    <!-- Inline script -->
+    <script>
+        (
+            function () {
+                window.setTournamentDate = function (v) {
+                    ocalStorage.setItem('tournamentDate', v || '');
+                };
+                window.getTournamentDate = function () {
+                    return localStorage.getItem('tournamentDate') || '';
+                };
+                document.addEventListener
+                    (
+                        'DOMContentLoaded', function () {
+                            var inp = document.getElementById('tourDate'); var saved = getTournamentDate(); if (saved) inp.value = saved.substring(0, 10);
+                            document.getElementById('saveDateBtn').addEventListener('click', function () { setTournamentDate(inp.value); alert('Tournament date saved.'); });
+                        }
+                    );
+            }
+        )();
+    </script>
+
+    <script>
+        document.addEventListener
+            (
+                'DOMContentLoaded', function () {
+                    progress.render('index');
+                }
+            );
+    </script>
+
+    <script>
+        (
+            function () {
+                function showTemp(id, text) {
+                    var el = document.getElementById(id);
+                    if (!el) return;
+                    el.textContent = text;
+                    el.style.display = 'inline';
+                    setTimeout
+                        (
+                            function () {
+                                el.style.display = 'none';
+                            }
+                            , 2000
+                        );
+                }
+                document.addEventListener
+                    (
+                        'DOMContentLoaded', function () {
+                            var saveDateBtn = document.getElementById('saveDateBtn');
+                            var dateInput = document.getElementById('tourDate');
+                            if (saveDateBtn && dateInput) {
+                                // Attemped to prevent any default focus behavior that could trigger a popup but isn't working
+                                saveDateBtn.addEventListener
+                                    (
+                                        'click', function (ev) {
+                                            ev.preventDefault();
+                                            var val = dateInput.value || '';
+                                            try {
+                                                localStorage.setItem('td_date', val);
+                                            }
+                                            catch (e) { }
+                                            showTemp('dateSavedMsg', 'Date saved');
+                                        }
+                                    );
+                            }
+                            var saveDistanceBtn = document.getElementById('saveDistanceBtn');
+                            var distanceInput = document.getElementById('fieldLengthFeet');
+                            if (saveDistanceBtn && distanceInput) {
+                                saveDistanceBtn.addEventListener
+                                    (
+                                        'click', function (ev) {
+                                            ev.preventDefault();
+                                            var val = distanceInput.value.trim();
+                                            if (val && !isNaN(val)) {
+                                                try {
+                                                    localStorage.setItem('td_distance_feet', String(Math.max(0, Math.floor(Number(val)))));
+                                                }
+                                                catch (e) { }
+                                                showTemp('distanceSavedMsg', 'Distance saved');
+                                            }
+                                            else {
+                                                // Clear saved if blank
+                                                try {
+                                                    localStorage.removeItem('td_distance_feet');
+                                                }
+                                                catch (e) { }
+                                                showTemp('distanceSavedMsg', 'Distance cleared');
+                                            }
+                                            // Refresh supplies suggestions on the home page, if helper is available.
+                                            try {
+                                                if (window.TD_refreshSuppliesSuggestions) {
+                                                    window.TD_refreshSuppliesSuggestions('catalogSupplies');
+                                                }
+                                            } catch (e) { }
+                                        }
+                                    );
+                            }
+                            // Prefill inputs if stored
+                            try {
+                                var storedD = localStorage.getItem('td_date');
+                                if (storedD && dateInput) dateInput.value = storedD;
+                                var storedLen = localStorage.getItem('td_distance_feet');
+                                if (storedLen && distanceInput) distanceInput.value = storedLen;
+                            }
+                            catch (e) {
+                            }
+                        }
+                    );
+            })();
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Accordion toggles
+            document.querySelectorAll('.accord-toggle').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var sec = btn.closest('.accord');
+                    if (!sec) return;
+                    var willOpen = !sec.classList.contains('open');
+                    sec.classList.toggle('open');
+                    if (willOpen) {
+                        try {
+                            var rect = sec.getBoundingClientRect();
+                            var offset = 110; // header + small margin
+                            var targetTop = window.scrollY + rect.top - offset;
+                            window.scrollTo({ top: targetTop, behavior: 'smooth' });
+                        } catch (e) { }
+                    }
+                });
+            });// Disc sub-tabs
+            var discTabButtons = document.querySelectorAll('.disc-tab-btn');
+            if (discTabButtons.length) {
+                discTabButtons.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var target = btn.getAttribute('data-target');
+                        discTabButtons.forEach(function (b) { b.classList.remove('active'); });
+                        btn.classList.add('active');
+                        document.querySelectorAll('.disc-tab-panel').forEach(function (panel) {
+                            if (panel.id === target) panel.classList.add('active');
+                            else panel.classList.remove('active');
+                        });
+                    });
+                });
+            }
+
+
+            // Sidebar recommendations under cart
+            if (window.TD_renderSidebarRecommendations) {
+                window.TD_renderSidebarRecommendations('recommendSidebar');
+                window.addEventListener('cartchange', function () {
+                    try {
+                        window.TD_renderSidebarRecommendations('recommendSidebar');
+                    } catch (e) { }
+                });
+            }
+
+            // Render guided catalogs into our single page
+            if (window.renderCatalog && Array.isArray(window.TD_PRODUCTS)) {
+                // Discs: load all Discs & Markers into each grid then filter
+                renderCatalog('discCustomGrid', { categories: ['Discs', 'Markers'] });
+                renderCatalog('discPlainGrid', { categories: ['Discs', 'Markers'] });
+
+                function filterDiscGrid(id, wantCustom) {
+                    var root = document.getElementById(id);
+                    if (!root) return;
+                    var cards = root.querySelectorAll('.card[data-customizable]');
+                    cards.forEach(function (card) {
+                        var isCustom = card.getAttribute('data-customizable') === '1';
+                        card.style.display = (isCustom === wantCustom) ? '' : 'none';
+                    });
+                }
+                filterDiscGrid('discCustomGrid', true);
+                filterDiscGrid('discPlainGrid', false);
+
+                // Supplies and extras
+                renderCatalog('catalogSupplies', { category: 'Supplies' });
+                renderCatalog('catalogExtras', { categories: ['Bottles', 'Apparel'] });
+            }
+        });
+    </script>
+</body>
+
+
+</html>

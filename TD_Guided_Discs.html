@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+        @file TD_Guided_Discs.html
+        @description Guided shopping page for discs: drivers, midranges, putters, and markers.
+    -->
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        Guided • Discs
+    </title>
+    <link href="assets/tdpro.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- /** Main PDGA TD Pro site header with logo, search, navigation, and cart shortcut. */ -->
+    <header class="pdga-head">
+        <div class="wrap row-top">
+            <div class="brand">
+                <div aria-label="PDGA" class="pdga-logo">
+                    <a href="https://www.pdga.com"><img src="https://www.pdga.com/sites/all/themes/pdga/logo.png" />
+                    </a>
+                </div>
+                <a class="title" href="index.html">
+                    PDGA TD Pro
+                    <br />
+                    Shop
+                </a>
+            </div>
+            <div class="searchbar">
+                <input aria-label="Search" class="search-input"
+                    placeholder="Search discs, apparel, TD kits, Custom Items" />
+                <button class="btn primary">
+                    Search
+                </button>
+            </div>
+            <div class="right-controls">
+                <select aria-label="Country" class="country" id="countrySelect">
+                    <option value="US">
+                        United States
+                    </option>
+                    <option value="CA">
+                        Canada
+                    </option>
+                    <option value="GB">
+                        United Kingdom
+                    </option>
+                    <option value="EU">
+                        Eurozone
+                    </option>
+                    <option value="AU">
+                        Australia
+                    </option>
+                    <option value="JP">
+                        Japan
+                    </option>
+                    <option value="SE">
+                        Sweden
+                    </option>
+                    <option value="NO">
+                        Norway
+                    </option>
+                    <option value="CH">
+                        Switzerland
+                    </option>
+                    <option value="MX">
+                        Mexico
+                    </option>
+                </select>
+                <span class="curr" id="currencyBadge">
+                    USD $
+                </span>
+                <a class="btn ghost" href="https://www.pdga.com/user/login?destination=homepage">
+                    Log in
+                </a>
+                <a class="btn ghost" href="TD_Cart.html">
+                    Cart
+                    <span class="badge" id="cartCount">
+                        0
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="wrap row-nav">
+            <nav class="nav">
+                <a href="index.html">
+                    Home
+                </a>
+                <a href="TD_Guided_Discs.html">
+                    Discs
+                </a>
+                <a href="TD_Guided_Supplies.html">
+                    Field Supplies
+                </a>
+                <a href="TD_Guided_Extras.html">
+                    Extras
+                </a>
+                <li class="nav-item dropdown" id="nav-about">
+                    <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                        About ▾
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-label="About submenu">
+                        <li>
+                            <a href="https://www.pdga.com/introduction" target="_blank" rel="noopener">
+                                What is Disc Golf?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/history" target="_blank" rel="noopener">
+                                History
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/board-directors" target="_blank" rel="noopener">
+                                Board of Directors
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/leadership" target="_blank" rel="noopener">
+                                Leadership
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/volunteers" target="_blank" rel="noopener">
+                                Volunteers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/news" target="_blank" rel="noopener">
+                                News
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/announcements" target="_blank" rel="noopener">
+                                Announcements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/faq-page" target="_blank" rel="noopener">
+                                FAQs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/careers" target="_blank" rel="noopener">
+                                Careers @ the PDGA
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <a href="https://www.pdga.com/contact">
+                    Contact
+                </a>
+            </nav>
+        </div>
+        <div class="teal-underline">
+        </div>
+    </header>
+
+    <!-- /** Guided flow progress bar container; filled by tdpro-progress.js. */ -->
+    <div id="progress-root">
+    </div>
+    <!-- /** Mini-cart widget placeholder that shows a small cart summary. */ -->
+    <div class="td-mini-widget" id="mini-cart">
+    </div>
+    <!-- /** Guided discs & markers step layout: prompt, product grid, and navigation buttons. */ -->
+    <main class="wrap">
+        <h1>
+            Which discs or markers would you like?
+        </h1>
+        <section class="section">
+            <!-- /** Dynamic product grid for the discs & markers step; populated by renderCatalog for disc types and markers. */ -->
+            <div id="catalogDiscs">
+            </div>
+        </section>
+        <!-- /** Guided navigation controls: Back, Skip, and Next links in the discs & markers wizard. */ -->
+        <div style="display:flex;gap:12px">
+            <a class="btn" href="index.html">
+                Back
+            </a>
+            <a class="btn" href="TD_Guided_Extras.html">
+                Skip
+            </a>
+            <a class="btn primary" href="TD_Guided_Extras.html">
+                Next
+            </a>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <!-- /** Core cart utilities shared across guided pages. */ -->
+    <script defer src="assets/tdpro-cart-core.js">
+    </script>
+    <!-- /** Site-wide helper functions (catalog rendering, formatting, and shared behavior). */ -->
+    <script defer src="assets/tdpro.js">
+    </script>
+    <!-- /** Keeps the header cart badge in sync on guided pages. */ -->
+    <script defer src="assets/tdpro-cartcount.js">
+    </script>
+    <!-- /** Guided shopping logic helpers used by all guided step pages. */ -->
+    <script defer src="assets/tdpro-guided.js">
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            /**
+             * On DOM ready, populate the discs & markers catalog grid with the appropriate categories.
+             */
+            renderCatalog('catalogDiscs', { categories: ['Discs', 'Markers'] });
+        });
+    </script>
+
+    <!-- /** Renders the top-of-page guided progress indicator. */ -->
+    <script src="assets/tdpro-progress.js">
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            /**
+             * Mark this page as part of the guided flow and update the progress bar to "discs".
+             */
+            markFlowGuided();
+            progress.render('guided', { page: 'discs' });
+        });
+    </script>
+
+    <!-- /** Shared widget script to allow embedding mini cart and helper widgets. */ -->
+    <script src="assets/tdpro-widget.js">
+    </script>
+</body>
+
+</html>

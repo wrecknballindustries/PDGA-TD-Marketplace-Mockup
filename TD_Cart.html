@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+        @file TD_Cart.html
+        @description Cart page summarizing all selected products, customization options, and order totals.
+    -->
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        Cart
+    </title>
+    <link href="assets/tdpro.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- /** Main PDGA TD Pro site header with logo, search, and navigation. */ -->
+    <header class="pdga-head">
+        <div class="wrap row-top">
+            <div class="brand">
+                <div aria-label="PDGA" class="pdga-logo">
+                    <a href="https://www.pdga.com">
+                        <img src="https://www.pdga.com/sites/all/themes/pdga/logo.png" alt="PDGA" />
+                    </a>
+                </div>
+                <a class="title" href="index.html">
+                    PDGA TD Pro
+                    <br />
+                    Shop
+                </a>
+            </div>
+            <div class="searchbar">
+                <input aria-label="Search" class="search-input"
+                    placeholder="Search discs, apparel, TD kits, Custom Items" />
+                <button class="btn primary">
+                    Search
+                </button>
+            </div>
+            <div class="right-controls">
+                <select aria-label="Country" class="country" id="countrySelect">
+                    <option value="US">
+                        United States
+                    </option>
+                    <option value="CA">
+                        Canada
+                    </option>
+                    <option value="GB">
+                        United Kingdom
+                    </option>
+                    <option value="EU">
+                        Eurozone
+                    </option>
+                    <option value="AU">
+                        Australia
+                    </option>
+                    <option value="JP">
+                        Japan
+                    </option>
+                    <option value="SE">
+                        Sweden
+                    </option>
+                    <option value="NO">
+                        Norway
+                    </option>
+                    <option value="CH">
+                        Switzerland
+                    </option>
+                    <option value="MX">
+                        Mexico
+                    </option>
+                </select>
+                <span class="curr" id="currencyBadge">
+                    USD $
+                </span>
+                <a class="btn ghost" href="https://www.pdga.com/user/login?destination=homepage">
+                    Log in
+                </a>
+                <a class="btn ghost" href="TD_Cart.html">
+                    Cart
+                    <span class="badge" id="cartCount">
+                        0
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="wrap row-nav">
+            <nav class="nav">
+                <a href="index.html">
+                    Home
+                </a>
+                <a href="TD_Guided_Discs.html">
+                    Discs
+                </a>
+                <a href="TD_Guided_Supplies.html">
+                    Field Supplies
+                </a>
+                <a href="TD_Guided_Extras.html">
+                    Extras
+                </a>
+                <li class="nav-item dropdown" id="nav-about">
+                    <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                        About ▾
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-label="About submenu">
+                        <li>
+                            <a href="https://www.pdga.com/introduction" target="_blank" rel="noopener">
+                                What is Disc Golf?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/history" target="_blank" rel="noopener">
+                                History
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/board-directors" target="_blank" rel="noopener">
+                                Board of Directors
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/leadership" target="_blank" rel="noopener">
+                                Leadership
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/volunteers" target="_blank" rel="noopener">
+                                Volunteers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/news" target="_blank" rel="noopener">
+                                News
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/announcements" target="_blank" rel="noopener">
+                                Announcements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/faq-page" target="_blank" rel="noopener">
+                                FAQs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.pdga.com/careers" target="_blank" rel="noopener">
+                                Careers @ the PDGA
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <a href="https://www.pdga.com/contact">
+                    Contact
+                </a>
+            </nav>
+        </div>
+        <div class="teal-underline">
+        </div>
+    </header>
+
+    <!-- /** Guided flow progress bar host element (shown only for guided shopping flows). */ -->
+    <div id="progress-root">
+    </div>
+    <!-- /** Compact floating mini-cart widget container. */ -->
+    <div class="td-mini-widget" id="mini-cart">
+    </div>
+
+    <!-- /** Primary cart layout: cart contents at left and order summary + checkout at right. */ -->
+    <main class="wrap">
+        <h1>
+            Your Cart
+        </h1>
+        <!-- /** Dynamic list of cart line items rendered from the saved cart data. */ -->
+        <div class="grid" id="cartBody">
+        </div>
+        <!-- /** Order summary panel showing price breakdown, shipping, tax, and totals. */ -->
+        <div class="card" style="max-width:420px;margin-top:16px">
+            <div class="body">
+                <div class="row">
+                    <strong>
+                        Subtotal
+                    </strong>
+                    <span id="subTotal" style="float:right">
+                        $0.00
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="muted">
+                        Estimated tax
+                    </span>
+                    <span id="taxTotal" style="float:right">
+                        $0.00
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="muted">
+                        Estimated shipping
+                    </span>
+                    <span id="shipTotal" style="float:right">
+                        $0.00
+                    </span>
+                </div>
+                <div class="row">
+                    <strong>
+                        Total
+                    </strong>
+                    <span id="grandTotal" style="float:right">
+                        $0.00
+                    </span>
+                </div>
+                <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+                    <!-- /** Checkout form collecting contact and shipping details, submitted to checkout.php. */ -->
+                    <form action="checkout.php" method="POST" id="checkoutForm"
+                        style="width:100%;display:flex;flex-direction:column;gap:8px">
+                        <input type="text" name="fullname" placeholder="Full Name" required class="input" />
+                        <input type="email" name="email" placeholder="Email Address" required class="input" />
+                        <input type="text" name="address" placeholder="Street Address" required class="input" />
+                        <input type="text" name="city" placeholder="City" required class="input" />
+                        <input type="text" name="state" placeholder="State / Province" required class="input" />
+                        <input type="text" name="zip" placeholder="ZIP / Postal Code" required class="input" />
+                        <input type="hidden" name="cartPayload" id="checkoutCartPayload" />
+                        <div style="display:flex;gap:8px;margin-top:8px">
+                            <button class="btn" id="clearCartBtn" type="button">
+                                Clear cart
+                            </button>
+                            <button class="btn primary" type="submit">
+                                Checkout
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <!-- /** Core shared cart utilities: load/save cart, price helpers, and currency formatting. */ -->
+    <script defer src="assets/tdpro-cart-core.js">
+    </script>
+    <!-- /** Site-wide helpers including catalog rendering and shared behaviors. */ -->
+    <script defer src="assets/tdpro.js">
+    </script>
+    <!-- /** Keeps the cart count badge in sync across all pages. */ -->
+    <script defer src="assets/tdpro-cartcount.js">
+    </script>
+    <!-- /** Guided flow utilities so the cart can show the progress bar when appropriate. */ -->
+    <script defer src="assets/tdpro-guided.js">
+    </script>
+
+    <script>
+        /**
+         * Main cart rendering and behavior script.
+         * - Loads cart from shared tdpro cart utilities.
+         * - Renders each cart line item and attaches quantity / notes / image handlers.
+         * - Keeps totals, shipping, and tax in sync with the current cart.
+         * - Wires up the checkout form so PHP can email the receipt.
+         */
+        (function () {
+            function fmt(n) {
+                return window.__td ? window.__td.fmt(n) : ('$' + Number(n).toFixed(2));
+            }
+            function render() {
+                var host = document.getElementById('cartBody');
+                var cart = (window.__td && window.__td.loadCart()) || [];
+                host.innerHTML = '';
+                if (!cart.length) {
+                    host.innerHTML = '<div class="muted">Your cart is empty.</div>';
+                } else {
+                    cart.forEach
+                        (
+                            function (it, idx) {
+                                var row = document.createElement('div'); row.className = 'card';
+                                var imgUrl = it.imageUrl || ('assets/images/' + it.id + '.png');
+                                var img = imgUrl ? '<img class="cart-thumb" src="' + imgUrl + '" alt="' + it.name + '">' : '<div class="cart-thumb"></div>';
+                                var customBlock = '';
+                                if (it.customizable) {
+                                    var thumbs = '';
+                                    if (Array.isArray(it.customImages) && it.customImages.length) {
+                                        thumbs = '<div class="thumbs">' + it.customImages.map(function (u, i) { return '<img class="thumb" src="' + u + '" alt="upload ' + (i + 1) + '">'; }).join('') + '</div>';
+                                    }
+                                    customBlock =
+                                        '<div class="custom-controls">' +
+                                        '<label class="custom-label">Artwork files (you can upload multiple):</label>' +
+                                        '<input type="file" accept="image/*" multiple data-idx="' + idx + '" data-act="files" />' +
+                                        thumbs +
+                                        '<label class="custom-label" style="margin-top:8px;">Notes:</label>' +
+                                        '<div class="custom-note-row">' +
+                                        '<textarea rows="2" data-idx="' + idx + '" data-act="notes" placeholder="Placement, colors, text, front/back, etc.">' + (it.customNotes || '') + '</textarea>' +
+                                        '<button class="btn" data-idx="' + idx + '" data-act="save-notes">Save</button>' +
+                                        '</div>' +
+                                        '</div>';
+                                }
+                                row.innerHTML =
+                                    '<div class="body cart-row">' +
+                                    '<div class="c-img">' + img + '</div>' +
+                                    '<div class="c-info"><div class="c-title">' + it.name + '</div><div class="muted small">SKU: ' + it.id + '</div></div>' +
+                                    '<div class="c-price">' + fmt(it.price) + ' <span class="muted small">ea.</span></div>' +
+                                    '<div class="c-qty qty-inline">' +
+                                    '<button data-idx="' + idx + '" data-act="dec">−</button>' +
+                                    '<input type="number" min="1" value="' + it.qty + '" data-idx="' + idx + '" data-act="set" />' +
+                                    '<button data-idx="' + idx + '" data-act="inc">+</button>' +
+                                    '</div>' +
+                                    '<div class="c-line">' + fmt(it.price * it.qty) + ' <span class="muted small">Total</span></div>' +
+                                    (it.customizable ? ('<div class="c-custom">' + customBlock + '</div>') : '') +
+                                    '<div class="cart-rec-hook"></div>' +
+                                    '</div>';
+                                host.appendChild(row);
+                            }
+                        );
+
+                    // After building all rows, attach recommendation tiles for matching items.
+                    try {
+                        if (window.TD_createRecommendationTile && typeof TD_buildConfigsForAdd === 'function') {
+                            var cards = host.querySelectorAll('.card');
+                            cart.forEach(function (it, idx) {
+                                if (!it || !it.id) return;
+                                var cfgs = TD_buildConfigsForAdd(it.id, it.qty || 1);
+                                if (!cfgs || !cfgs.length) return;
+                                var card = cards[idx];
+                                if (!card) return;
+                                var hook = card.querySelector('.cart-rec-hook') || card.querySelector('.body.cart-row') || card;
+                                TD_createRecommendationTile(hook, cfgs);
+                            });
+                        }
+                    } catch (e) { }
+                }
+                var total = cart.reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+                var hasItems = cart.length > 0;
+                var taxRate = 0.07;
+                var tax = hasItems ? (total * taxRate) : 0;
+                var shipping = hasItems ? 9.99 : 0;
+
+                document.getElementById('subTotal').textContent = fmt(total);
+                document.getElementById('taxTotal').textContent = fmt(tax);
+                document.getElementById('shipTotal').textContent = fmt(shipping);
+                var payloadInput = document.getElementById('checkoutCartPayload');
+                if (payloadInput) {
+                    try {
+                        payloadInput.value = JSON.stringify(cart || []);
+                    } catch (e) {
+                        payloadInput.value = '[]';
+                    }
+                }
+                var grandEl = document.getElementById('grandTotal');
+                if (grandEl) {
+                    grandEl.textContent = fmt(total + tax + shipping);
+                }
+            }
+
+            document.addEventListener('click', function (e) {
+                var b = e.target;
+                if (b.dataset && b.dataset.idx != null && (b.dataset.act === 'inc' || b.dataset.act === 'dec' || b.dataset.act === 'set')) {
+                    var idx = +b.dataset.idx, act = b.dataset.act, cart = (window.__td && window.__td.loadCart()) || [];
+                    if (!cart[idx]) return;
+                    if (act === 'inc') cart[idx].qty += 1;
+                    else if (act === 'dec') cart[idx].qty = Math.max(1, cart[idx].qty - 1);
+                    else if (act === 'set') cart[idx].qty = Math.max(1, parseInt(b.value, 10) || 1);
+                    window.__td && window.__td.saveCart(cart);
+                    render();
+                    window.dispatchEvent(new CustomEvent('cartchange', { detail: { cart: cart } }));
+                }
+                if (b.matches('button[data-act="save-notes"]')) {
+                    var idx2 = +b.dataset.idx, cart2 = (window.__td && window.__td.loadCart()) || [];
+                    var ta = b.parentElement.querySelector('textarea[data-act="notes"]');
+                    if (cart2[idx2]) { cart2[idx2].customNotes = ta.value; window.__td.saveCart(cart2); }
+                }
+            }, { passive: true });
+
+            document.addEventListener('change', function (e) {
+                var f = e.target;
+                if (!f.matches('input[type="file"][data-act="files"]')) return;
+                var idx = +f.dataset.idx; var cart = (window.__td && window.__td.loadCart()) || [];
+                if (!cart[idx]) return;
+                var files = Array.prototype.slice.call(f.files || []);
+                if (!files.length) return;
+                var maxToStore = 4;
+                var readCount = Math.min(files.length, maxToStore);
+                var done = 0; var imgs = [];
+                for (var i = 0; i < readCount; i++) {
+                    (function (file) {
+                        var r = new FileReader();
+                        r.onload = function (ev) {
+                            imgs.push(ev.target.result);
+                            done += 1;
+                            if (done === readCount) {
+                                cart[idx].customImages = imgs;
+                                window.__td.saveCart(cart);
+                                setTimeout(render, 0);
+                            }
+                        };
+                        r.readAsDataURL(file);
+                    })(files[i]);
+                }
+            });
+
+            document.addEventListener('DOMContentLoaded', render);
+            window.addEventListener('cartchange', render);
+            window.addEventListener('currencychange', render);
+        }
+        )();
+    </script>
+
+    <script src="assets/tdpro-progress.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var flow = sessionStorage.getItem('flow') || 'unknown';
+            var last = sessionStorage.getItem('lastPage') || '';
+            var fromIndex = (last === 'index.html');
+            var fromDirect = (last === 'TD_Shop_All.separated.html');
+            if (flow === 'guided' && !fromIndex && !fromDirect) {
+                progress.render('cart');
+            }
+            else {
+                progress.hide();
+            }
+        });
+    </script>
+
+    <!-- /** Small embedded widget that lets other pages show cart snippets and quick actions. */ -->
+    <script src="assets/tdpro-widget.js">
+    </script>
+</body>
+
+</html>
